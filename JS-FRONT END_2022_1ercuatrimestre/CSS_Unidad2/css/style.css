@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box {
+    background-color: red;
+    font-size:40px;
+    color: yellow;
+    width: 250px;
+    height: 250px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#box-two {
+    background-color: black;
+    color: white;
+}
