@@ -8,14 +8,18 @@
 	</head>
 	<body>
 		<h1>El resultado de la suma de las dos variables es:</h1>
-		<p style="font-size: 32px; font-weight: normal" id="resultado"></p>
 		<script>
 			window.onload = function () {
 				let primera = 40;
 				let segunda = 16;
 				let sumaTotal = primera + segunda;
 
-				document.getElementById("resultado").innerHTML = sumaTotal;
+				tag = document.createElement("p");
+				tag.style = "font-size: 32px; font-weight: normal";
+				tag.innerHTML = sumaTotal;
+
+				body = document.getElementsByTagName("body");
+				body[0].appendChild(tag);
 			};
 		</script>
 	</body>
