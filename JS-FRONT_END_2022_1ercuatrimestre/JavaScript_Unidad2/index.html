@@ -8,19 +8,20 @@
 	</head>
 	<body>
 		<h1>Tablas de multiplicar</h1>
-		<div id="placeholder"></div>
+		<div id="tablesPlaceholder"></div>
 
 		<script>
 			window.onload = function () {
-				let placeholder = document.getElementById("placeholder");
+				let tablesPlaceholder = document.getElementById("tablesPlaceholder");
+
 				for (let number = 11; number > 0; number--) {
 					let tag = document.createElement("p");
-					let text = "<b>La tabla del " + number + ":</b><br>";
-					for (let multiplyBy = 1; multiplyBy < 10; multiplyBy++) {
+					let text = `<b>La tabla del ${number}:</b><br>`;
+					for (let multiplyBy = 1; multiplyBy <= 9; multiplyBy++) {
 						text += `${number} x ${multiplyBy} = ${number * multiplyBy}<br>`;
 					}
 					tag.innerHTML = text;
-					placeholder.appendChild(tag);
+					tablesPlaceholder.appendChild(tag);
 				}
 			};
 		</script>
