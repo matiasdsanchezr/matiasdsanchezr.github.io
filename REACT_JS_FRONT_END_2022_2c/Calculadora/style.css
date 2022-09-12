@@ -108,6 +108,6 @@ body {
 
 .calculator__button-equal {
   background-color: var(--button-color3);
-  grid-row: 4/6;
+  grid-row: 5/7;
   grid-column-start: 6;
 }
