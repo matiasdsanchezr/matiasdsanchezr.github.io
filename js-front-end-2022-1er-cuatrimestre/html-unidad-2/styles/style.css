@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+header {
+    background-color: #0000af;
+    text-align: center;
+    color: white;
+    margin: 0px;
+    padding: 1em;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"] {
+    margin-left: auto;
+    width: 50%;
+    max-width: 200px;
+}

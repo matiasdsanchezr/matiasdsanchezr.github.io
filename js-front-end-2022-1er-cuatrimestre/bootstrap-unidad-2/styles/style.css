@@ -1,0 +1,31 @@
+:root {
+	--main-bg-color: rgb(37, 145, 251);
+	--main-bg-image: linear-gradient(
+		96.5deg,
+		rgba(39, 103, 187, 1) 10.4%,
+		rgba(16, 72, 144, 1) 87.7%
+	);
+}
+
+header {
+	background-color: var(--main-bg-color);
+	background-image: var(--main-bg-image);
+}
+
+footer {
+	background-color: var(--main-bg-color);
+	background-image: var(--main-bg-image);
+}
+
+.form {
+	max-width: 585px;
+}
+
+.display-5 {
+	/* used on footer */
+	font-size: 1.5rem !important;
+}
+
+.btn-primary {
+	background-color: rgba(39, 103, 187, 1) !important;
+}

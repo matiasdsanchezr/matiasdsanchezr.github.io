@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>El resultado de la suma de las dos variables es:</h1>
+		<script>
+			window.onload = function () {
+				let primera = 40;
+				let segunda = 16;
+				let sumaTotal = primera + segunda;
+
+				tag = document.createElement("p");
+				tag.style = "font-size: 32px; font-weight: normal";
+				tag.innerHTML = sumaTotal;
+
+				body = document.getElementsByTagName("body");
+				body[0].appendChild(tag);
+			};
+		</script>
+	</body>
+</html>
