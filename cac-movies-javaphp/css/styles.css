@@ -2,12 +2,16 @@
 
 :root {
   font-family: "Work Sans", sans-serif;
-  --primary-color: #9f3647;
-  --secondary-color: #5e212b;
+  --primary-color: #052d5a;
+  --secondary-color: #011731;
   --primary-font-color: #fff;
-  /* --background-color: #181419; */
   --background-color: #11181f;
-  --header-height: 60px;
+  --header-height: 61px;
+  /* Original Colors*/
+  /* --primary-color: #9f3647; */
+  /* --secondary-color: #5e212b; */
+  /* --primary-font-color: #fff; */
+  /* --background-color: #11181f; */
 }
 
 * {
@@ -18,48 +22,60 @@
   margin: 0;
 }
 
+html {
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) black;
+  scrollbar-gutter: stable;
+}
+
 body {
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: var(--background-color);
   color: var(--primary-font-color);
-  display: flex;
-  flex-flow: column nowrap;
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: auto 1fr auto;
 }
 
-main {
-  /* Ajustar el tamaño vertical del contenido main para que ocupe toda la pantalla */
-  flex: 1;
-}
-
+button,
+textarea,
+select,
+label,
 a {
   color: var(--primary-font-color);
+  /* disable blue square when tapping on mobile devices*/
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-::-webkit-scrollbar-track {
+/* Scrollbar customization old
+body::-webkit-scrollbar-track {
   background: #555;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background: var(--primary-color);
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   height: 0.75rem;
   width: 0.75rem;
   border: 1px solid #d5d5d5;
-}
+} */
 
-/* ========== Elementos genericos ========== */
+/* ========== Elementos comunes ========== */
 
 .h1 {
   font-size: 1.3rem;
   font-weight: 700;
   width: 100%;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .h2 {
@@ -68,7 +84,7 @@ a {
   width: 100%;
 }
 
-.h2--center {
+.text-center {
   text-align: center;
 }
 
@@ -183,21 +199,25 @@ a {
   justify-content: space-between;
   align-items: center;
   height: var(--header-height);
-  padding: 1rem;
 }
 
 .header::after {
   content: "";
-  width: 60%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 350px;
   height: 100%;
   background-color: #2727273d;
   position: absolute;
-  transform: translateX(-20%) skew(40deg);
+  transform: translateX(-50%) skew(40deg);
 }
 
-.header--transparent {
+.header--secondary {
   background-color: transparent;
+  position: static;
+}
+
+.header--secondary::after {
+  content: none;
 }
 
 .header__logo {
@@ -207,13 +227,9 @@ a {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  /* padding: 1rem; */
+  padding: 0.75rem;
   z-index: 10000;
   position: relative;
-}
-
-.header__logo:hover {
-  animation: logo-animation 3s linear 0.5s infinite forwards;
 }
 
 @keyframes logo-animation {
@@ -224,11 +240,15 @@ a {
     transform: rotate3d(0, 1, 0, 360deg);
   }
   50% {
-    transform: skew(-0.025turn, 10deg);
+    transform: skew(-0.025turn, 7deg);
   }
   75% {
     transform: skew(0, 0);
   }
+}
+
+.header__logo:hover {
+  animation: logo-animation 3s linear 0.5s infinite forwards;
 }
 
 .header__logo-icon {
@@ -266,6 +286,7 @@ a {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  outline: none;
 }
 
 .header__nav {
@@ -286,15 +307,16 @@ a {
 }
 
 .header__ul {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  display: grid;
+  grid-auto-flow: row;
 }
 
-.header__li {
+.header__link {
+  font-weight: 600;
+  display: inline-grid;
   width: 100%;
   text-align: center;
-  padding: 1em 0.625em;
+  padding: 1rem;
   border-radius: 5px;
   cursor: pointer;
   user-select: none;
@@ -305,11 +327,19 @@ a {
   }
 }
 
-.header__li .header__button--highlight {
+.header__link--highlight {
+  background-color: #222;
+}
+
+.header__li--highlight {
   background-color: var(--background-color);
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    padding: 0 2rem;
+  }
+
   .header__hamburguer {
     display: none;
   }
@@ -328,7 +358,7 @@ a {
   }
 
   .header__ul {
-    flex-flow: row nowrap;
+    grid-auto-flow: column;
   }
 
   .header__li {
@@ -373,11 +403,11 @@ a {
   }
 }
 
-/* ========== Seccion de presentacion (Hero Section) ========== */
+/* ========== Hero section ========== */
 
 .hero {
   background: linear-gradient(to right top, #0000008a, #0000008a),
-    url(../assets/img/banner-bg.jpg);
+    url(../assets/img/banner1.jpg);
   background-position: center;
   background-size: cover;
   overflow: hidden;
@@ -391,6 +421,11 @@ a {
   min-height: calc(100vh - var(--header-height));
 }
 
+.hero__title {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .hero__title {
     font-size: 4rem;
@@ -401,7 +436,7 @@ a {
   }
 }
 
-/* ========== Sección busqueda ========== */
+/* ========== Search movie section ========== */
 
 .search {
   padding: 3rem 1rem;
@@ -414,7 +449,7 @@ a {
   justify-content: center;
   gap: 1em;
   text-align: center;
-  text-wrap: pretty; /* Not compatible with every browser */
+  text-wrap: pretty;
 }
 
 .search__input {
@@ -432,13 +467,16 @@ a {
   }
 }
 
-/* ========== Sección peliculas en tendencia ========== */
+/* ========== Trending movies section ========== */
+
 .trending {
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: center;
+  display: grid;
+  gap: 1rem;
 }
 
-.trending__movies-container {
+.trending__container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -449,7 +487,6 @@ a {
 
 .movie-card {
   width: 100%;
-  min-width: 300px;
   max-width: 500px;
   aspect-ratio: 2 / 3;
   position: relative;
@@ -491,6 +528,7 @@ a {
 @media screen and (min-width: 768px) {
   .trending {
     padding: 3rem 1rem;
+    gap: 2rem;
   }
 
   .movie-card {
@@ -498,41 +536,41 @@ a {
   }
 }
 
-/* ========== Trending movies styles ========== */
+/* ========== Top movies section ========== */
 
 .top-movies {
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: center;
+  display: grid;
+  gap: 1rem;
 }
 
-.top-movies__movies-container {
+.top-movies__container {
+  width: 100%;
+  max-width: max-content;
   display: flex;
   flex-flow: row nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
   gap: 1em;
-  width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 0.5rem 0;
+  overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  margin: auto;
+  padding: 1rem;
 }
 
 .top-movies__movie-card {
   scroll-snap-align: center;
+  min-width: 250px;
 }
 
 @media screen and (min-width: 768px) {
   .top-movies {
-    padding: 3rem 1rem;
-  }
-
-  .top-movies__movies-container {
-    width: 90%;
+    padding: 3rem;
   }
 }
 
-/* Sign up page */
+/* ========== Sign up section ========== */
 
 .signup {
   width: 100%;
@@ -565,12 +603,13 @@ a {
   }
 }
 
-/* Sign in page */
+/* Sign in section */
+
 .signin {
   width: 100%;
 }
 
-/* Detalles de pelicula */
+/* ========== Movie detail section ========== */
 
 .movie-detail {
   background: linear-gradient(to right top, #6d6969a7, #6d6969a7),
@@ -593,7 +632,6 @@ a {
 }
 
 .movie-detail__image-container {
-  /* TODO: Add support for browser not supporting aspect ratio */
   aspect-ratio: 3 / 4.5;
   width: 100%;
   max-height: 70vh;
@@ -651,7 +689,7 @@ a {
   }
 }
 
-/* Sección trailer de peliculas */
+/* ========== Movie trailer section ========== */
 
 .movie-trailer {
   padding: 3rem 1rem;

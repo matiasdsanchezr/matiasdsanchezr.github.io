@@ -48,12 +48,18 @@
       ></label>
       <nav class="header__nav">
         <ul class="header__ul">
-          <li class="header__li"><a href="./index.html">Tendencias</a></li>
-          <li class="header__li">
-            <a href="./pages/registrarse.html">Registrarse</a>
+          <li><a href="./index.html" class="header__link">Tendencias</a></li>
+          <li>
+            <a href="./pages/registrarse.html" class="header__link"
+              >Registrarse</a
+            >
           </li>
-          <li class="header__li">
-            <a href="./pages/iniciosesion.html">Iniciar Sesión</a>
+          <li>
+            <a
+              href="./pages/iniciosesion.html"
+              class="header__link header__link--highlight"
+              >Iniciar Sesión</a
+            >
           </li>
         </ul>
       </nav>
@@ -65,18 +71,18 @@
         <h1 class="h1 hero__title">
           Películas y series ilimitadas en un solo lugar
         </h1>
-        <p class="hero__subtitle">
-          Disfruta donde quieras. <br />
-          Cancela en cualquier momento.
-        </p>
+        <div class="hero__subtitle-list">
+          <p class="hero__subtitle">Disfruta donde quieras.</p>
+          <p class="hero__subtitle">Cancela en cualquier momento.</p>
+        </div>
         <a href="./pages/registrarse.html">
           <button class="btn btn-primary">Registrate</button>
         </a>
       </section>
 
       <!-- Sección de Busqueda -->
-      <section class="grid grid--center search">
-        <form class="search__form">
+      <section class="search">
+        <form class="search__form" id="search-form">
           <h2 class="h2">¿Qué estas buscando para ver?</h2>
           <input
             class="input search__input"
@@ -94,9 +100,9 @@
       <hr class="separator" />
 
       <!-- Sección peliculas en tendencia -->
-      <section class="grid grid--center trending">
+      <section class="trending">
         <h2 class="h2">Las tendencias de hoy</h2>
-        <div class="trending__movies-container">
+        <div class="trending__container">
           <div class="movie-card">
             <a href="./pages/detalle.html">
               <img
@@ -358,7 +364,7 @@
             </div>
           </div>
         </div>
-        <div class="flex">
+        <div class="flex flex--center">
           <button class="btn btn--primary-outlined">Anterior</button>
           <button class="btn btn--primary-outlined">Siguiente</button>
         </div>
@@ -366,9 +372,9 @@
       <hr class="separator" />
 
       <!-- Sección peliculas mas valoradas -->
-      <section class="grid grid--center top-movies">
+      <section class="top-movies">
         <h2 class="h2">Las más aclamadas</h2>
-        <div class="top-movies__movies-container">
+        <div class="top-movies__container">
           <div class="movie-card top-movies__movie-card">
             <a href="#">
               <img
@@ -644,5 +650,14 @@
         </ul>
       </nav>
     </footer>
+
+    <script>
+      const searchForm = document.querySelector("#search-form");
+      searchForm.addEventListener("submit", (e) => {
+        let searchInput = document.querySelector(".search__input");
+        alert(`Estas buscando: ${searchInput.value}`);
+        e.preventDefault();
+      });
+    </script>
   </body>
 </html>
